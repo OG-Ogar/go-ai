@@ -1,0 +1,12 @@
+# Python virtual environment (created by python3 -m venv .venv)
+.venv/
+
+# Model checkpoints are large binaries; regenerate them by training.
+checkpoints/
+
+# Generated corpus (rebuild with: python scripts/build_corpus.py)
+data/cybersecurity_corpus.txt
+
+# Python cache
+__pycache__/
+*.pyc

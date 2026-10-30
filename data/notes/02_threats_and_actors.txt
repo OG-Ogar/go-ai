@@ -1,0 +1,148 @@
+THREATS AND THREAT ACTORS
+
+WHY ATTACKERS ATTACK
+
+Attackers are motivated by money, espionage, ideology, revenge, curiosity,
+status, or coercion. Motivation predicts behavior. A financially motivated
+criminal wants fast access to payment data and will often leave as soon as
+they are paid. A state-sponsored group wants long-term persistence and
+secrecy. An insider may want to leak data or sabotage systems they already
+legitimately access.
+
+THREAT ACTOR CATEGORIES
+
+Script kiddies use existing tools without deep understanding. They are noisy
+and easy to detect but can still cause damage.
+
+Hacktivists attack for political or social reasons. They favor website
+defacement, data leaks, and denial of service.
+
+Cybercriminals operate for profit and often run industrialized operations
+such as ransomware-as-a-service, phishing kits, and credential markets.
+
+Insider threats are current or former employees, contractors, or partners.
+They may act maliciously, or they may be negligent, or their account may be
+compromised by an outsider.
+
+Nation-state actors have the most resources and patience. They conduct
+espionage, intellectual property theft, disruption, and prepositioning for
+future conflict. Advanced persistent threat is the term for a long-term,
+stealthy, well-resourced intrusion campaign.
+
+Competitors may conduct corporate espionage, though this overlaps with
+criminal and state activity.
+
+Hackers are also described by hat color. White hat hackers work with
+authorization and report findings. Black hat hackers act illegally. Grey hat
+hackers act without authorization but often without malicious intent.
+
+THE CYBER KILL CHAIN
+
+The kill chain describes the stages of an intrusion, adapted from military
+targeting. Reconnaissance gathers information about the target. Weaponization
+builds a deliverable such as a malicious document. Delivery sends it, for
+example by email. Exploitation triggers the vulnerability. Installation
+establishes persistence, such as a backdoor. Command and control connects the
+implant to the attacker. Actions on objectives achieve the goal, such as data
+theft or encryption. Defenders can break the chain at any stage.
+
+MITRE ATT&CK
+
+MITRE ATT&CK is a knowledge base of real attacker behaviors organized into
+tactics, techniques, and procedures. Tactics are the why, such as initial
+access or persistence. Techniques are the how, such as phishing or
+scheduled tasks. Procedures are the specific implementations observed in the
+wild. Defenders use ATT&CK to map detections, plan threat hunting, and
+measure coverage.
+
+THE DIAMOND MODEL
+
+The diamond model analyzes an intrusion along four vertices: adversary,
+capability, infrastructure, and victim. Each event connects these four
+elements. The model helps analysts pivot, for example from one malicious IP
+address to other victims that talked to it.
+
+THE ATTACK LIFE CYCLE
+
+A practical life cycle has these phases. Reconnaissance studies the target.
+Initial access gains a foothold. Execution runs code. Persistence survives
+reboots. Privilege escalation gains higher rights. Defense evasion avoids
+detection. Credential access steals passwords or tokens. Discovery maps the
+environment. Lateral movement reaches other systems. Collection gathers data.
+Exfiltration removes it. Impact destroys or extorts.
+
+RECONNAISSANCE
+
+Passive reconnaissance collects information without touching the target
+directly. Examples include search engines, social media, certificate
+transparency logs, DNS records, job postings, and public code repositories.
+
+Active reconnaissance sends traffic to the target. Examples include port
+scanning, service fingerprinting, directory brute forcing, and vulnerability
+scanning. Active reconnaissance is louder and more likely to be logged.
+
+OSINT, or open source intelligence, is the discipline of gathering
+information from public sources. Attackers use it to find employee names,
+email formats, technologies in use, and exposed credentials.
+
+SCANNING AND ENUMERATION
+
+A port scan asks which TCP or UDP ports on a host accept connections. A
+synchronize scan sends a TCP SYN and never completes the handshake. A connect
+scan completes the handshake and is easier to log. Service detection sends
+probes and compares responses to signatures to guess software and version.
+
+Enumeration extracts details such as usernames, shares, groups, and
+software versions. Tools include Nmap for networks, Gobuster and ffuf for web
+content, and BloodHound for Active Directory relationships.
+
+VULNERABILITY SCANNING
+
+A vulnerability scanner compares a system against a database of known
+weaknesses. It reports findings with severity scores. Scanners produce false
+positives and false negatives, so findings must be validated. Scanning
+without authorization is unethical and often illegal.
+
+ZERO-DAY AND N-DAY
+
+A zero-day vulnerability is unknown to the vendor, so no patch exists. An
+n-day vulnerability is known and patched, but many systems remain unpatched.
+Most real-world compromise uses n-days, because patching is slow.
+
+EXPLOIT KITS AND WEAPONIZATION
+
+An exploit kit is a service that packages exploits for browser and plugin
+flaws behind a malicious web page. It fingerprints the visitor and chooses a
+suitable exploit. Weaponization also includes malicious documents, macro
+payloads, and trojanized installers.
+
+ADVANCED PERSISTENT THREAT BEHAVIOR
+
+APTs favor living off the land, meaning they use legitimate tools already
+present on the system, such as PowerShell, Windows Management
+Instrumentation, and scheduled tasks. This blends with normal administration
+and frustrates signature-based detection. They move slowly, use encrypted
+channels, and maintain multiple fallback access paths.
+
+THREAT INTELLIGENCE
+
+Threat intelligence is evidence-based knowledge about adversaries. Strategic
+intelligence informs leadership. Operational intelligence informs campaigns.
+Tactical intelligence informs attacker tactics. Technical intelligence
+provides indicators such as IP addresses, domains, file hashes, and
+mutexes. Indicators age quickly, so context matters more than a list of
+blocked addresses.
+
+The intelligence cycle is planning, collection, processing, analysis,
+dissemination, and feedback. A common standard for sharing is STIX for
+structured data and TAXII for transport. Open sources include vendor blogs,
+government advisories, and information sharing and analysis centers.
+
+INSIDER THREAT INDICATORS
+
+Warning signs include access attempts outside normal hours, large downloads,
+use of unauthorized storage devices, attempts to bypass controls, sudden
+interest in unrelated systems, and resignation combined with unusual data
+access. Technical controls include data loss prevention, user behavior
+analytics, and least privilege. Cultural controls include fair treatment and
+clear reporting channels.

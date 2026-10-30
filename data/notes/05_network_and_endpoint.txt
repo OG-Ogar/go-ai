@@ -1,0 +1,153 @@
+NETWORK SECURITY
+
+NETWORK MODELS
+
+The OSI model has seven layers: physical, data link, network, transport,
+session, presentation, and application. The TCP/IP model condenses these into
+link, internet, transport, and application. Security controls exist at every
+layer.
+
+A firewall filters traffic. A packet-filtering firewall inspects addresses
+and ports. A stateful firewall tracks connections. An application firewall
+understands specific protocols. A next-generation firewall adds intrusion
+prevention, application awareness, and threat intelligence.
+
+A demilitarized zone is a network segment for internet-facing services,
+separated from the internal network by firewalls. If a public web server is
+compromised, the attacker still faces an internal firewall.
+
+Network segmentation divides a network into zones with controlled traffic
+between them. Segmentation limits lateral movement. Micro-segmentation applies
+the idea to individual workloads.
+
+A virtual private network creates an encrypted tunnel over an untrusted
+network. Site-to-site VPNs connect offices. Remote access VPNs connect users.
+Modern alternatives include zero trust network access, which grants access to
+specific applications rather than the whole network.
+
+Network access control checks device identity and health before allowing a
+connection. Unpatched or unknown devices can be quarantined.
+
+A proxy or secure web gateway mediates outbound web traffic, enabling
+filtering, logging, and malware inspection.
+
+INTRUSION DETECTION AND PREVENTION
+
+An intrusion detection system monitors traffic or hosts and raises alerts.
+A network intrusion detection system watches packets on the wire. A host
+intrusion detection system watches system calls, files, and logs. An intrusion
+prevention system can block, not only alert.
+
+Signature detection matches known patterns and is precise but blind to new
+attacks. Anomaly detection learns a baseline and flags deviations, catching
+novel behavior but producing more false positives.
+
+A honeypot is a decoy system designed to attract attackers and reveal
+techniques. A honeynet is a network of decoys.
+
+MONITORING AND LOGGING
+
+A security information and event management system collects logs from many
+sources, normalizes them, correlates events, and alerts. Log sources include
+firewalls, endpoints, identity providers, cloud platforms, and applications.
+
+Time synchronization is essential for correlation. Use network time protocol
+with authentication where possible.
+
+Log retention balances investigation needs with cost and privacy. Logs must
+be protected from tampering; write them to append-only or remote storage.
+
+NetFlow and IPFIX record metadata about connections without full packet
+content, which is efficient for detecting scanning, beaconing, and data
+transfer anomalies.
+
+Full packet capture is expensive but invaluable during investigations.
+
+ENDPOINT SECURITY
+
+Antivirus matches known malware signatures. Endpoint detection and response
+goes further, recording process, file, network, and registry activity,
+detecting suspicious behavior, and enabling response actions such as
+isolating a host.
+
+Application allowlisting permits only approved programs to run. It is one of
+the strongest defenses because most malware is an unapproved executable.
+
+Host hardening removes unnecessary services, disables default accounts,
+enforces least privilege, enables firewalls, and turns on logging. Benchmarks
+from CIS and vendor baselines provide concrete settings.
+
+Patch management is the process of inventorying software, tracking
+vulnerabilities, testing patches, and deploying them on a schedule. Critical
+internet-facing flaws need emergency patching.
+
+Configuration management keeps systems in a known good state and detects
+drift. Infrastructure as code makes configuration reviewable and repeatable.
+
+Disk encryption protects data at rest if a device is lost or stolen.
+Secure boot verifies the boot chain. Measured boot records measurements for
+attestation.
+
+WIRELESS SECURITY
+
+Wired equivalent privacy is broken and must not be used. Wi-Fi protected
+access, WPA, improved it, and WPA2 with AES and the counter mode with cipher
+block chaining message authentication code protocol is still common. WPA3
+adds simultaneous authentication of equals, which resists offline dictionary
+attacks, and stronger encryption.
+
+A pre-shared key is convenient for homes and small offices but weak at scale
+because everyone shares one secret. Enterprise mode uses 802.1X with a
+RADIUS server, giving each user their own credentials.
+
+Wi-Fi protected setup simplifies pairing but has design flaws and should be
+disabled.
+
+Wireless attacks include evil twin access points, deauthentication floods,
+and rogue devices. Wireless intrusion detection systems monitor for them.
+
+BLUETOOTH AND NEAR-FIELD COMMUNICATION
+
+Bluetooth attacks include bluesnarfing, which steals data, and bluebugging,
+which takes control. Disable Bluetooth when unused, keep devices updated, and
+avoid pairing in public. Near-field communication is short range and used for
+payments; relay attacks are the main concern.
+
+EMAIL SECURITY
+
+SPF publishes which servers may send mail for a domain. DKIM signs messages
+cryptographically. DMARC tells receivers what to do when SPF or DKIM fail and
+provides reporting. Together they reduce spoofing but do not stop lookalike
+domains.
+
+Email gateways scan attachments and links, detonate suspicious files in
+sandboxes, and rewrite links for click-time inspection.
+
+Domain-based protections should be paired with lookalike domain monitoring,
+because attackers register similar names.
+
+DDoS MITIGATION
+
+Defenses include rate limiting, connection limits, SYN cookies, upstream
+scrubbing, content delivery networks, and anycast distribution. A runbook
+should define thresholds, contacts, and communication plans.
+
+Load balancers and auto-scaling absorb some volumetric attacks, but
+application-layer attacks require behavior analysis.
+
+DNS SECURITY
+
+DNS is a frequent target because it is essential and often unencrypted.
+DNSSEC signs records so resolvers can verify authenticity. DNS over HTTPS and
+DNS over TLS encrypt queries for privacy. Protective DNS services block
+malicious domains.
+
+DNS tunneling hides data in queries and responses, enabling exfiltration or
+command and control.
+
+NETWORK ARCHITECTURE PRINCIPLES
+
+Prefer default deny. Keep management interfaces on separate networks.
+Encrypt management traffic. Avoid flat networks. Document data flows. Apply
+least privilege to firewall rules and review them regularly. Remove rules that
+are no longer needed, because rule sprawl creates hidden paths.

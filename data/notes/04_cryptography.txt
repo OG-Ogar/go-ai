@@ -1,0 +1,157 @@
+CRYPTOGRAPHY
+
+PURPOSE AND PRIMITIVES
+
+Cryptography provides confidentiality through encryption, integrity through
+hashing and message authentication codes, authenticity and non-repudiation
+through digital signatures, and key exchange so two parties can agree on a
+shared secret over an untrusted channel.
+
+Cryptography protects data, but it does not protect against a stolen key, a
+compromised endpoint, or a careless user. Security depends on key management
+as much as on mathematics.
+
+SYMMETRIC ENCRYPTION
+
+Symmetric encryption uses one shared key to encrypt and decrypt. It is fast
+and suitable for large data. The Advanced Encryption Standard, AES, is the
+modern standard with key sizes of 128, 192, or 256 bits. Older algorithms
+such as DES and 3DES are deprecated.
+
+Block ciphers encrypt fixed-size blocks. A mode of operation defines how to
+handle data larger than one block.
+
+Electronic codebook mode encrypts each block independently. Identical
+plaintext blocks produce identical ciphertext, which leaks patterns, so it
+must not be used for real data.
+
+Cipher block chaining mode XORs each plaintext block with the previous
+ciphertext block. It hides patterns but requires an initialization vector
+and cannot be parallelized for encryption.
+
+Counter mode turns a block cipher into a stream cipher by encrypting
+incrementing counters. It is parallelizable and fast, but it provides no
+integrity by itself.
+
+Galois counter mode, GCM, combines counter mode with authentication and is
+widely used in TLS. It is an authenticated encryption mode.
+
+A nonce or initialization vector must never repeat with the same key in
+stream or counter modes. Reuse can leak plaintext relationships and break
+authentication entirely.
+
+Symmetric problems are key distribution and scale. With n users needing
+pairwise secrets, the number of keys grows towards n squared.
+
+ASYMMETRIC ENCRYPTION
+
+Asymmetric encryption uses a key pair. The public key may be shared; the
+private key must remain secret. Data encrypted with one key can be decrypted
+with the other.
+
+Rivest-Shamir-Adleman, RSA, relies on the difficulty of factoring large
+numbers. Elliptic curve cryptography, ECC, achieves similar security with
+much smaller keys. ECC with Curve25519 and P-256 is common in modern
+protocols.
+
+Asymmetric encryption is slow, so it is normally used to exchange a
+symmetric session key. That hybrid design is how TLS works.
+
+Key exchange protocols such as Diffie-Hellman let two parties derive a shared
+secret without transmitting it. Elliptic curve Diffie-Hellman, ECDH, is the
+modern variant. Ephemeral keys provide forward secrecy: if the long-term
+private key leaks later, past sessions remain unreadable.
+
+HASHING
+
+A cryptographic hash maps any input to a fixed-length digest. It must be
+deterministic, fast to compute, one-way, and collision resistant. Common
+hashes are SHA-256 and SHA-3. MD5 and SHA-1 are broken for collision
+resistance and must not be used for security.
+
+Hashes verify integrity: if one bit of input changes, the digest changes
+completely, an effect called the avalanche property.
+
+A message authentication code, MAC, combines a hash with a secret key to
+prove both integrity and authenticity. HMAC is the standard construction.
+
+PASSWORD HASHING
+
+General-purpose hashes are too fast for passwords. Password hashing functions
+are deliberately slow and memory-hard to frustrate cracking. bcrypt, scrypt,
+and Argon2 are the recommended choices, with Argon2id being the modern
+default.
+
+A salt is a unique random value per password, preventing rainbow tables and
+hiding identical passwords. A pepper is an additional secret applied to all
+passwords, stored separately from the database.
+
+Iteration count or work factor must be tuned so that one hash takes a
+noticeable fraction of a second on current hardware.
+
+DIGITAL SIGNATURES AND CERTIFICATES
+
+A digital signature is produced by hashing a message and encrypting, or
+signing, the hash with a private key. Anyone with the public key can verify
+it. Signatures provide integrity, authenticity, and non-repudiation.
+
+A certificate binds a public key to an identity. It is issued by a
+certificate authority after validation. The X.509 standard defines the
+format. A certificate contains the subject, public key, issuer, validity
+period, and extensions such as subject alternative names.
+
+A chain of trust runs from a root certificate authority through intermediate
+authorities to the leaf certificate. Roots are trusted because they ship with
+the operating system or browser.
+
+Certificate revocation handles keys that are compromised before expiry.
+Certificate revocation lists and the online certificate status protocol are
+traditional methods. Short-lived certificates and certificate transparency
+logs are increasingly used instead.
+
+Certificate transparency is a public append-only log of issued
+certificates, allowing detection of misissuance.
+
+TLS
+
+Transport Layer Security protects data in transit. The handshake authenticates
+the server, often the client, and negotiates keys and algorithms. Then
+application data is encrypted with authenticated symmetric encryption.
+
+In TLS 1.3 the handshake is one round trip. It supports only strong
+algorithms, uses ephemeral key exchange for forward secrecy, and encrypts most
+of the handshake. TLS 1.0 and 1.1 are deprecated. TLS 1.2 remains acceptable
+with strong cipher suites.
+
+Common TLS failures include expired certificates, hostname mismatches,
+downgrade to weak versions, missing HSTS, and insecure renegotiation.
+
+HSTS instructs browsers to use HTTPS only. Certificate pinning restricts
+which certificates an application trusts, at the cost of operational
+complexity.
+
+KEY MANAGEMENT
+
+Key management covers generation, distribution, storage, rotation, and
+destruction. Keys must be generated with a cryptographically secure random
+number generator. Keys should be stored in hardware security modules or
+key management services where possible, never in source code.
+
+Rotation limits the damage from a leaked key. Separation of duties prevents
+one person from controlling keys alone. Envelope encryption wraps data keys
+with a master key so that the master key protects many data keys.
+
+Post-quantum cryptography is being standardized because large quantum
+computers could break RSA and ECC. Organizations are beginning to inventory
+cryptographic usage in preparation for migration.
+
+COMMON MISTAKES
+
+Rolling your own cryptography is a mistake; use vetted libraries. Using
+electronic codebook mode, reusing nonces, using MD5 or SHA-1, comparing
+secrets with non-constant-time equality, hardcoding keys, and ignoring
+certificate validation are all common and serious errors.
+
+Encryption at rest protects stolen disks. Encryption in transit protects
+networks. Neither protects a running system from an attacker with valid
+credentials, which is why access control and monitoring still matter.

@@ -1,0 +1,188 @@
+ATTACK TECHNIQUES
+
+PASSWORD ATTACKS
+
+A brute force attack tries every possible password. It is slow against long
+passwords and fast against short ones. A dictionary attack tries common
+words and known leaked passwords, which is far more efficient. A hybrid
+attack combines dictionary words with numbers and symbols.
+
+Credential stuffing takes username and password pairs leaked from one site
+and replays them on other sites. It works because people reuse passwords.
+Defenses include unique passwords, breached-password checks, and rate
+limiting.
+
+Password spraying tries a few common passwords against many accounts. It
+avoids lockout thresholds that trigger after many failures on one account.
+
+A rainbow table is a precomputed mapping from password hashes to passwords.
+Salting defeats it. A salt is a random value stored with each hash, so the
+same password produces different hashes for different users.
+
+Offline attacks steal a password database and crack it at leisure. Online
+attacks must interact with a live service and are limited by rate limiting
+and lockouts.
+
+NTLM relay and pass-the-hash attacks abuse Windows authentication protocols
+by reusing captured hashes without cracking them.
+
+Defenses include multi-factor authentication, long unique passphrases,
+account lockout with care, monitoring for spraying patterns, and banning
+breached passwords.
+
+NETWORK ATTACKS
+
+Eavesdropping, or sniffing, captures network traffic. On wired networks it
+requires access to a switch port or a mirror. On wireless networks radio
+signals are inherently broadcast. Encryption such as TLS and WPA3 prevents
+readable eavesdropping.
+
+A man-in-the-middle attack places the attacker between two parties, who each
+believe they talk directly to the other. The attacker can read, modify, or
+inject traffic. ARP spoofing, DNS spoofing, rogue access points, and
+malicious proxies are common enablers. Certificate validation and mutual
+authentication defend against it.
+
+Address resolution protocol spoofing sends fake ARP replies so traffic for
+the gateway is sent to the attacker. Dynamic ARP inspection and static
+entries mitigate it.
+
+DNS cache poisoning inserts false records into a resolver's cache, so users
+are sent to attacker-controlled addresses. DNSSEC adds cryptographic
+signatures to DNS answers.
+
+Denial of service floods a target with traffic or requests until it cannot
+serve legitimate users. Distributed denial of service uses many compromised
+hosts, often a botnet. Amplification attacks send small requests with a
+spoofed source address to services that return large responses, multiplying
+traffic. Defenses include rate limiting, scrubbing centers, anycast, and
+upstream filtering.
+
+A smurf attack abuses ICMP broadcast. A SYN flood exhausts the connection
+table with half-open handshakes.
+
+VLAN hopping escapes network segmentation using switchport spoofing or
+double tagging. Proper switch configuration disables unused trunk ports and
+enforces native VLAN rules.
+
+A rogue access point impersonates a legitimate wireless network to capture
+credentials. An evil twin is the same idea with a matching network name.
+Wireless intrusion detection and certificate-based authentication help.
+
+Session hijacking steals an authenticated session cookie or token. Defenses
+include the secure and HttpOnly cookie flags, short session lifetimes,
+binding sessions to client attributes, and TLS everywhere.
+
+BGP hijacking advertises false internet routes to redirect traffic. Route
+origin validation and monitoring help detect it.
+
+WEB ATTACKS
+
+SQL injection inserts database commands through unsanitized input, allowing
+data theft, authentication bypass, and sometimes remote code execution.
+Parameterized queries, also called prepared statements, are the primary
+defense. Input validation and least-privilege database accounts reduce
+impact.
+
+Cross-site scripting injects JavaScript into pages viewed by other users.
+Stored XSS persists in the database, reflected XSS comes back in a response,
+and DOM-based XSS executes in the browser without server involvement.
+Output encoding, content security policy, and safe frameworks defend against
+it.
+
+Cross-site request forgery tricks a logged-in user's browser into sending an
+unwanted request. Anti-CSRF tokens and SameSite cookies defend against it.
+
+Server-side request forgery makes the server fetch a URL chosen by the
+attacker, reaching internal services. Allowlists, network segmentation, and
+disabling unnecessary URL fetching reduce it.
+
+Insecure direct object reference occurs when an application exposes an
+internal identifier and fails to check authorization. Access control checks
+on every object are required.
+
+XML external entity injection abuses XML parsers that resolve external
+entities, allowing file reads and SSRF. Disable external entities.
+
+Insecure deserialization turns attacker-controlled data into objects,
+sometimes executing code. Avoid native deserialization of untrusted input.
+
+Directory traversal uses sequences such as dot dot slash to escape an
+intended directory. Canonicalize paths and validate against an allowlist.
+
+Command injection passes shell metacharacters through unsanitized input.
+Avoid shell invocation and use parameterized APIs.
+
+File upload vulnerabilities allow web shells or malware. Validate type,
+store outside the web root, rename files, and scan them.
+
+Open redirects send users to attacker sites from a trusted link. Validate
+redirect targets against an allowlist.
+
+Web cache poisoning injects malicious content into a shared cache. Correct
+cache keys and strict header handling mitigate it.
+
+HTTP request smuggling exploits disagreement between front-end and back-end
+parsers about message boundaries. Keep infrastructure patched and consistent.
+
+Business logic flaws abuse intended functionality, such as changing a price
+parameter or replaying a coupon. They cannot be fixed by generic tools; they
+require design review.
+
+MALWARE
+
+A virus attaches to a host file and spreads when the file runs. A worm
+spreads by itself across networks without user action. A trojan disguises
+itself as legitimate software. A rootkit hides itself and maintains
+privileged access. Spyware collects information secretly. Adware displays
+unwanted advertising. A keylogger records keystrokes. Ransomware encrypts
+data and demands payment. A botnet is a network of compromised machines
+controlled remotely, often used for DDoS, spam, and credential theft.
+
+Ransomware operations often steal data first and threaten to publish it,
+which is called double extortion. Some also launch denial of service or
+contact customers, called triple extortion. Backups, segmentation, and
+immutable storage are the strongest defenses because they remove the
+attacker's leverage.
+
+Fileless malware runs in memory using legitimate tools such as PowerShell
+or Windows Management Instrumentation. It leaves few files on disk, so
+behavioral detection matters.
+
+A dropper installs a payload. A loader fetches it. A beacon periodically
+contacts command and control infrastructure.
+
+Polymorphic malware changes its appearance to evade signatures. Metamorphic
+malware rewrites its own code. Both push defenders toward behavior-based
+detection.
+
+Malware analysis has two modes. Static analysis inspects the file without
+running it, using strings, headers, and disassembly. Dynamic analysis runs
+it in a sandbox and observes behavior. Analysts combine both.
+
+PHISHING AND SOCIAL ENGINEERING
+
+Phishing sends fraudulent messages that impersonate a trusted party.
+Spear phishing targets specific people using personal details. Whaling
+targets executives. Vishing uses voice calls. Smishing uses text messages.
+Pharming redirects users through poisoned DNS or hosts files.
+
+Pretexting invents a scenario to justify a request. Baiting offers something
+tempting, such as a free download or a found USB drive. Tailgating follows
+an authorized person through a door. Quid pro quo offers help in exchange
+for information.
+
+Business email compromise impersonates an executive or supplier to redirect
+payments. It often requires no malware, only convincing language.
+
+Defenses include technical email authentication with SPF, DKIM, and DMARC;
+link and attachment sandboxing; multi-factor authentication; payment
+verification procedures; and repeated awareness training with easy reporting.
+
+PHYSICAL ATTACKS
+
+Shoulder surfing observes screens or keypads. Dumpster diving recovers
+discarded documents. Lock picking and lock bypass open doors. USB drops
+plant malicious devices. Wi-Fi Pineapple style devices impersonate networks.
+Physical security controls include badges, mantraps, cameras, locked racks,
+and cable locks.

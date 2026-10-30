@@ -1,0 +1,161 @@
+SECURITY FOUNDATIONS
+
+THE CIA TRIAD
+
+The CIA triad is the foundation of information security. It names the three
+properties that security work tries to protect.
+
+Confidentiality means that information is only readable by people who are
+authorized to read it. Encryption, access control lists, file permissions,
+and data classification all exist to protect confidentiality. A breach of
+confidentiality is called a disclosure.
+
+Integrity means that information is accurate and has not been changed by
+anyone who is not allowed to change it. Hashing, digital signatures, version
+control, and write permissions protect integrity. A breach of integrity is
+called an alteration, and it is often more dangerous than disclosure because
+decisions are made on corrupted data.
+
+Availability means that systems and data are reachable when authorized users
+need them. Backups, redundancy, load balancing, and denial of service
+protection protect availability. A breach of availability is called a
+destruction or an interruption.
+
+A common extension is the Parkerian hexad, which adds possession or control,
+authenticity, and utility. Another extension adds non-repudiation, meaning a
+person cannot credibly deny having performed an action, which is achieved
+with digital signatures and audit logs.
+
+THE AAA MODEL
+
+Authentication answers the question: who are you? It is proven with
+something you know, such as a password; something you have, such as a token
+or phone; something you are, such as a fingerprint; somewhere you are, such
+as a network location; or something you do, such as a typing rhythm.
+
+Authorization answers the question: what are you allowed to do? It is
+enforced by permissions, roles, and policy.
+
+Accounting, also called auditing, answers the question: what did you do?
+It is recorded in logs that must be protected from tampering.
+
+Multi-factor authentication requires two or more different categories.
+A password plus a one-time code is multi-factor. Two passwords are not,
+because they are both something you know.
+
+THREAT, VULNERABILITY, RISK, AND EXPLOIT
+
+A threat is a potential cause of harm, such as an attacker, a flood, or a
+bug. A vulnerability is a weakness that a threat can use, such as an
+unpatched server or a careless employee. An exploit is the concrete technique
+or code that abuses a vulnerability. Risk is the combination of likelihood
+and impact. Risk equals threat multiplied by vulnerability multiplied by
+impact, in the simplest qualitative model.
+
+Security is not the same as zero risk. Security is the management of risk
+down to an acceptable level at an acceptable cost. Controls reduce either the
+likelihood of an event or its impact.
+
+TYPES OF SECURITY CONTROLS
+
+Preventive controls stop an incident before it happens. Examples include
+firewalls, locks, input validation, and security awareness training.
+
+Detective controls notice an incident while or after it happens. Examples
+include intrusion detection systems, log monitoring, and file integrity
+monitoring.
+
+Corrective controls limit damage and restore service after an incident.
+Examples include backups, incident response playbooks, and failover systems.
+
+Deterrent controls discourage attackers. Warning banners, visible cameras,
+and legal notices are deterrents.
+
+Compensating controls are alternatives used when the primary control cannot
+be applied, such as a network segmentation rule when a host cannot be patched.
+
+Controls are also classified as administrative, such as policies and
+training; technical, such as software and hardware; and physical, such as
+guards, fences, and locks.
+
+DEFENSE IN DEPTH
+
+Defense in depth means layering independent controls so that the failure of
+one does not cause a total compromise. A typical layered architecture has
+perimeter firewalls, network segmentation, host firewalls, endpoint
+detection, application authentication, encryption, monitoring, and backups.
+An attacker must defeat many layers, which raises cost and creates chances to
+detect them.
+
+LEAST PRIVILEGE AND NEED TO KNOW
+
+Least privilege means every user, process, and service receives only the
+permissions required for its job, and only for as long as required. Need to
+know is the data-specific version of the same idea. These principles limit
+the blast radius of a compromised account.
+
+SEPARATION OF DUTIES
+
+Separation of duties splits a sensitive process between multiple people so
+that no single person can abuse it alone. The classic example is that the
+person who requests a payment is not the person who approves it. In
+cybersecurity, the person who writes code should not be the only person who
+can deploy it to production.
+
+SECURE BY DESIGN AND ZERO TRUST
+
+Secure by design means building security into a system from the beginning
+rather than bolting it on later. It includes threat modeling, secure
+defaults, minimal attack surface, and failing safely.
+
+Zero trust is a model that removes the assumption that anything inside the
+network is trustworthy. Every request is authenticated, authorized, and
+encrypted regardless of network location. The slogan is never trust, always
+verify. Practical zero trust uses strong identity, device health checks,
+micro-segmentation, and continuous monitoring.
+
+THE ATTACK SURFACE
+
+The attack surface is the sum of all points where an attacker could try to
+enter or extract data. It includes exposed network services, web forms,
+APIs, user accounts, supply chain dependencies, physical ports, and even
+employees through social engineering. Reducing the attack surface means
+removing unnecessary services, closing unused ports, disabling unused
+accounts, and minimizing installed software.
+
+ASSETS, DATA CLASSIFICATION, AND THE CROWN JEWELS
+
+An asset is anything of value: data, systems, people, reputation, or
+facilities. Data classification labels information by sensitivity, for
+example public, internal, confidential, and restricted. Classification
+drives how data is stored, shared, logged, and destroyed. Crown jewels are
+the assets whose loss would hurt the organization most, such as customer
+databases, source code, or signing keys. Defenses should be strongest around
+crown jewels.
+
+THE SECURITY LIFE CYCLE
+
+Security is continuous, not a one-time project. The cycle is: identify assets
+and risks; protect with controls; detect problems; respond to incidents; and
+recover and improve. Frameworks such as NIST Cybersecurity Framework express
+this as identify, protect, detect, respond, and recover, with governance as
+an organizing function.
+
+THREAT MODELING
+
+Threat modeling is a structured way to find design weaknesses before
+attackers do. A simple method is to ask four questions: what are we building;
+what can go wrong; what are we going to do about it; and did we do a good
+job. STRIDE is a popular checklist: spoofing, tampering, repudiation,
+information disclosure, denial of service, and elevation of privilege. Each
+component of a system, its trust boundaries, and the data flows between them
+should be examined.
+
+COMMON SECURITY METRICS
+
+Mean time to detect measures how long it takes to notice an intrusion.
+Mean time to respond measures how long it takes to contain it. Patch
+latency measures the gap between a vendor fix and deployment. Phishing
+click rate measures user susceptibility. Coverage metrics measure the
+percentage of assets with logging, endpoint agents, or backups. Metrics are
+useful only when tied to decisions.

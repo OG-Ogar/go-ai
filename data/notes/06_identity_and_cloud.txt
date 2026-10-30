@@ -1,0 +1,163 @@
+IDENTITY, ACCESS, AND CLOUD SECURITY
+
+IDENTITY AS THE NEW PERIMETER
+
+Modern systems are distributed across clouds, devices, and software as a
+service. The user's identity is the most reliable control point. Strong
+identity means unique accounts, multi-factor authentication, lifecycle
+management, and least privilege.
+
+IDENTITY AND ACCESS MANAGEMENT
+
+Identity and access management covers provisioning, authentication,
+authorization, and deprovisioning. Joiner, mover, and leaver processes must be
+automated so that access changes when roles change and access disappears when
+people leave.
+
+Single sign-on lets one authentication grant access to many applications. It
+improves usability and centralizes control, but a compromised identity then
+reaches everything, so strong authentication and session monitoring matter.
+
+Federated identity lets an identity provider assert a user's identity to
+service providers. SAML uses XML assertions. OpenID Connect builds on OAuth 2
+for authentication. OAuth 2 itself is an authorization framework, not an
+authentication protocol, a distinction that is often confused.
+
+A JSON web token encodes claims in a signed structure. Tokens must be
+validated for signature, issuer, audience, and expiry. Never trust a token
+without verification.
+
+Role-based access control assigns permissions to roles and roles to users.
+Attribute-based access control evaluates attributes of user, resource,
+action, and environment. The latter is more flexible but harder to audit.
+
+Privileged access management controls administrative accounts with vaulting,
+session recording, just-in-time elevation, and approval workflows. Standing
+administrator rights are a major risk.
+
+Directory services such as Active Directory and LDAP store identities and
+group memberships. Kerberos is the default authentication protocol in Active
+Directory. Kerberoasting extracts service tickets and cracks them offline.
+Golden ticket attacks forge Kerberos tickets when the key distribution center
+is compromised. Defenses include strong service account passwords, managed
+service accounts, tiered administration, and monitoring.
+
+PASSWORDLESS AUTHENTICATION
+
+Passkeys and FIDO2 security keys use public key cryptography bound to a
+device and origin. They resist phishing because the credential is only used
+with the legitimate site. Passwordless reduces help desk load and removes
+phishing of shared secrets.
+
+CLOUD SECURITY
+
+The shared responsibility model divides duties. The provider secures the
+underlying infrastructure. The customer secures identities, configurations,
+data, and applications. Misunderstanding the boundary causes breaches.
+
+Identity is the primary cloud attack surface. Root accounts should have
+multi-factor authentication and no access keys. Workloads should use roles and
+short-lived credentials instead of long-lived keys.
+
+Storage misconfiguration exposes data. Buckets and blobs should block public
+access by default, use encryption, and enforce policies. Access should be
+logged.
+
+Infrastructure as code makes cloud configuration repeatable and reviewable.
+Policy as code tools detect insecure configurations before deployment. Cloud
+security posture management continuously scans deployed resources for drift
+and misconfiguration.
+
+Logging services must be enabled and centralized. Provider audit logs record
+control plane actions. Network flow logs record traffic. Alerts should fire on
+suspicious identity behavior, such as a new administrator or a disabled logging
+service.
+
+Serverless and container platforms introduce new risks: overly broad function
+roles, vulnerable base images, exposed metadata services, and secrets in
+environment variables.
+
+Kubernetes security includes role-based access control, network policies,
+admission control, image scanning, and secrets management. The control plane
+must be protected, and the dashboard should not be publicly exposed.
+
+Secrets management stores credentials in a dedicated vault with audit and
+rotation. Secrets must never live in code repositories or container images.
+
+Multi-cloud and hybrid estates multiply identity systems and increase the
+risk of inconsistent policy. Centralized identity and consistent logging are
+essential.
+
+APPLICATION SECURITY
+
+Secure development begins with secure requirements and threat modeling.
+Developers should receive secure coding training and use safe defaults.
+
+Input validation rejects unexpected data at trust boundaries. Output encoding
+prevents injection. Parameterized queries separate code from data.
+
+Dependencies are a major risk. Software composition analysis inventories
+libraries and flags vulnerable versions. A software bill of materials lists
+components and versions so that response to a supply chain incident is fast.
+
+Static analysis examines source code without running it. Dynamic analysis
+tests a running application. Interactive analysis combines both. Fuzzing
+feeds random or mutated inputs to find crashes.
+
+Continuous integration pipelines must protect secrets, verify dependencies,
+sign artifacts, and restrict who can deploy. A compromised build pipeline
+compromises every release.
+
+The Open Worldwide Application Security Project publishes a top ten list of
+web application risks, which is widely used for awareness and prioritization.
+It is a starting point, not a complete checklist.
+
+API security requires authentication on every endpoint, authorization per
+object, rate limiting, schema validation, and inventory of exposed endpoints.
+Shadow APIs, which are forgotten or undocumented, are a common weakness.
+
+MOBILE SECURITY
+
+Mobile risks include insecure data storage, weak transport security,
+excessive permissions, and reverse engineering. Applications should store
+secrets in the platform keystore, use certificate pinning where appropriate,
+and avoid logging sensitive data.
+
+Mobile device management and mobile application management enforce policy on
+corporate devices and applications. Containerization separates work and
+personal data.
+
+Jailbreaking and rooting remove platform protections. Detecting tampering
+raises the cost of abuse.
+
+INTERNET OF THINGS AND OPERATIONAL TECHNOLOGY
+
+IoT devices often ship with default passwords, outdated firmware, and no
+update mechanism. Put them on isolated network segments, change defaults, and
+restrict outbound traffic.
+
+Operational technology controls physical processes. Availability and safety
+outrank confidentiality. Protocols such as Modbus were designed without
+security, so compensating controls such as segmentation and monitoring are
+essential. The Purdue model describes layered industrial network
+architecture.
+
+SUPPLY CHAIN SECURITY
+
+Supply chain attacks compromise software, hardware, or services upstream.
+Defenses include vendor risk assessment, contractual security requirements,
+artifact signing, reproducible builds, dependency pinning, and monitoring for
+compromised updates. The software bill of materials supports rapid impact
+assessment.
+
+ARTIFICIAL INTELLIGENCE SECURITY
+
+Machine learning systems add new risks. Data poisoning corrupts training
+data. Model inversion extracts information about training data. Adversarial
+examples cause misclassification. Model theft copies a model through queries.
+
+Large language models introduce prompt injection, where malicious text in
+content causes the model to follow attacker instructions, and data leakage
+through memorized training data. Defenses include input and output filtering,
+privilege separation, and never granting a model more access than the user
+has.

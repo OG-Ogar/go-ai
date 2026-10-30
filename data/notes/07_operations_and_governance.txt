@@ -1,0 +1,213 @@
+SECURITY OPERATIONS AND INCIDENT RESPONSE
+
+THE SECURITY OPERATIONS CENTER
+
+A security operations center monitors, detects, investigates, and responds to
+security events. Roles include tier one triage, tier two investigation, tier
+three threat hunting and engineering, and an incident commander for major
+events.
+
+A typical shift reviews alerts from endpoint, network, identity, and cloud
+telemetry. Analysts decide whether an alert is a true positive, then contain
+and escalate as needed.
+
+SOC metrics include alert volume, false positive rate, time to detect, time
+to respond, and coverage of critical assets. Too many untuned alerts cause
+fatigue, which is itself a security risk.
+
+ALERT TUNING AND DETECTION ENGINEERING
+
+Detection engineering writes and maintains detection rules. A good rule has a
+clear hypothesis, known false positives, a severity, and a response guide.
+Rules should be tested against real and synthetic data.
+
+Sigma is a vendor-neutral format for detection rules. YARA matches patterns
+in files. Suricata and Snort rules match network traffic.
+
+Detection coverage is often mapped to MITRE ATT&CK techniques so that gaps are
+visible.
+
+THREAT HUNTING
+
+Threat hunting is a proactive search for hidden compromise that alerts did not
+catch. A hunt starts with a hypothesis, such as an attacker using remote
+management tools, then queries telemetry for evidence. Hunts produce new
+detections and improved visibility.
+
+INCIDENT RESPONSE
+
+The NIST incident response life cycle has four phases: preparation; detection
+and analysis; containment, eradication, and recovery; and post-incident
+activity.
+
+Preparation includes plans, roles, contacts, tooling, backups, and exercises.
+A team should know who declares an incident and who communicates externally.
+
+Detection and analysis confirms whether an event is an incident, determines
+scope, and preserves evidence.
+
+Containment stops the spread. Short-term containment might isolate a host.
+Long-term containment might rebuild a segment. Eradication removes the cause,
+such as malware, backdoors, and vulnerable software. Recovery restores normal
+operations and monitors for recurrence.
+
+Post-incident activity documents what happened, what worked, and what to
+change. A blameless review improves systems rather than punishing individuals.
+
+Incident response playbooks define step-by-step actions for common scenarios
+such as ransomware, business email compromise, data loss, and insider threat.
+Tabletop exercises test the playbook before a real crisis.
+
+EVIDENCE HANDLING AND CHAIN OF CUSTODY
+
+Evidence must be collected in a way that preserves integrity and is
+admissible if legal action follows. Document who collected what, when, where,
+and how. Use write blockers when imaging disks. Hash images and record the
+hash. Store evidence in a controlled location with limited access.
+
+Order of volatility guides collection: capture memory and network state before
+powering down, because volatile data disappears.
+
+DIGITAL FORENSICS
+
+Disk forensics examines file systems, deleted files, and metadata. Memory
+forensics examines running processes, network connections, and injected code.
+Network forensics examines packet captures and flow logs. Log forensics
+reconstructs activity across systems.
+
+File system artifacts include timestamps, prefetch files, shell bags, jump
+lists, and recycle bin contents. Windows event logs record logons, process
+creation, and service installation. The Windows registry stores configuration
+and persistence keys.
+
+On Linux, useful artifacts include authentication logs, shell history,
+systemd units, cron jobs, and package manager logs.
+
+A timeline correlates events across sources to reconstruct an attack.
+
+Anti-forensics includes timestomping, log deletion, and encryption. Defenders
+counter it with centralized logging and integrity monitoring.
+
+VULNERABILITY MANAGEMENT
+
+Vulnerability management is a continuous cycle: inventory assets, scan for
+weaknesses, prioritize, remediate, and verify. Scanning without remediation is
+wasted effort.
+
+Risk-based prioritization considers exploitability, exposure, business
+criticality, and available threat intelligence. The common vulnerability
+scoring system gives a severity score from zero to ten, but severity alone is
+not priority. The exploit prediction scoring system estimates the likelihood
+that a vulnerability will be exploited. Known exploited vulnerability catalogs
+list flaws actively used in attacks.
+
+Patch management must include third-party software, firmware, and container
+images, not just the operating system.
+
+Compensating controls buy time when patching is impossible: network
+isolation, virtual patching with a web application firewall, and increased
+monitoring.
+
+Penetration testing validates defenses through authorized simulated attacks.
+It has phases: scoping and rules of engagement, reconnaissance, exploitation,
+post-exploitation, reporting, and retesting. A test without written
+authorization is a crime, not a test.
+
+Red teams simulate realistic adversaries over longer periods. Blue teams
+defend. Purple teams improve collaboration by turning red findings into blue
+detections.
+
+Bug bounty programs invite external researchers to report vulnerabilities for
+rewards. They require clear scope, safe harbor language, and triage capacity.
+
+RISK MANAGEMENT
+
+Qualitative risk uses categories such as low, medium, and high. Quantitative
+risk assigns money. Single loss expectancy is the cost of one event. Annualized
+rate of occurrence is expected events per year. Annualized loss expectancy is
+single loss expectancy multiplied by annualized rate of occurrence. Return on
+security investment compares loss avoided with control cost.
+
+Risk responses are mitigate, transfer, avoid, and accept. Insurance transfers
+financial risk. Accepting risk must be documented and owned.
+
+A risk register lists risks, owners, likelihood, impact, controls, and
+treatment plans.
+
+FRAMEWORKS AND COMPLIANCE
+
+The NIST cybersecurity framework organizes outcomes into identify, protect,
+detect, respond, recover, and govern. It is voluntary and widely used.
+
+ISO 27001 specifies requirements for an information security management
+system: leadership, risk assessment, controls, and continual improvement. ISO
+27002 provides control guidance.
+
+The CIS critical security controls are a prioritized set of technical
+safeguards, including inventory, configuration, access control, logging, and
+malware defense.
+
+COBIT and ITIL focus on governance and service management.
+
+Compliance regimes map to legal obligations. The general data protection
+regulation protects personal data of European residents and requires lawful
+basis, minimization, breach notification, and privacy by design. The health
+insurance portability and accountability act protects health information in
+the United States. The payment card industry data security standard protects
+cardholder data. SOC 2 reports on trust services criteria for service
+organizations. Sarbanes-Oxley requires financial controls for public companies.
+
+Compliance is a floor, not a ceiling. An organization can be compliant and
+still insecure.
+
+PRIVACY AND DATA PROTECTION
+
+Privacy principles include lawfulness, purpose limitation, data minimization,
+accuracy, storage limitation, integrity, and accountability.
+
+Data loss prevention detects and blocks sensitive data leaving controlled
+environments. It uses pattern matching, fingerprinting, and classification
+labels. It is most effective when combined with clear policy and user
+education.
+
+Data retention schedules define how long data is kept and when it is
+destroyed. Secure destruction uses shredding for paper and cryptographic
+erasure or overwriting for media.
+
+BUSINESS CONTINUITY AND DISASTER RECOVERY
+
+Business continuity keeps essential functions running during disruption.
+Disaster recovery restores technology after a major failure. Key metrics are
+recovery time objective, the maximum acceptable downtime, and recovery point
+objective, the maximum acceptable data loss.
+
+Backups must be tested. The three-two-one rule suggests three copies, on two
+media types, with one offsite. Immutable backups resist ransomware.
+
+Failover sites may be hot, warm, or cold depending on readiness and cost.
+
+SECURITY AWARENESS AND CULTURE
+
+Awareness programs teach employees to recognize phishing, protect
+credentials, handle data correctly, and report incidents quickly. Training
+should be short, frequent, and relevant to the person's role.
+
+Simulated phishing measures susceptibility but must be handled carefully to
+avoid eroding trust. The goal is a culture where reporting is safe and valued.
+
+Leadership sets the tone. Security policies are useless if executives ignore
+them.
+
+LEGAL AND ETHICAL CONSIDERATIONS
+
+Security work must be authorized and lawful. Testing systems without
+permission violates computer misuse laws. Handling personal data requires a
+legal basis. Evidence must be preserved properly if prosecution is possible.
+
+Ethical duties include minimizing harm, protecting confidentiality of
+findings, disclosing vulnerabilities responsibly, and avoiding surveillance
+that is disproportionate to the risk.
+
+Responsible disclosure gives vendors time to fix a flaw before public
+details are released. Coordinated disclosure involves a facilitator when
+parties disagree.

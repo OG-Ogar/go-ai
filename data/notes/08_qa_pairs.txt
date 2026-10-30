@@ -1,0 +1,497 @@
+SECURITY QUESTIONS AND ANSWERS
+
+Question: What is the CIA triad?
+Answer: The CIA triad is confidentiality, integrity, and availability.
+Confidentiality means only authorized parties can read data. Integrity means
+data is accurate and unaltered. Availability means systems and data are
+accessible when needed.
+
+Question: What is the difference between a vulnerability and an exploit?
+Answer: A vulnerability is a weakness, such as an unpatched service. An
+exploit is the technique or code that abuses the weakness. A threat is the
+actor or event that could cause harm, and risk combines likelihood with
+impact.
+
+Question: What is defense in depth?
+Answer: Defense in depth is layering independent controls so that one failure
+does not lead to total compromise. Firewalls, segmentation, endpoint
+protection, encryption, monitoring, and backups all contribute.
+
+Question: What is least privilege?
+Answer: Least privilege means giving each user, process, and service only the
+permissions needed for its task, for only as long as needed. It limits the
+damage a compromised account can cause.
+
+Question: What is multi-factor authentication?
+Answer: Multi-factor authentication requires two or more different factor
+categories: something you know, something you have, or something you are. A
+password plus a code from an authenticator app is multi-factor. Two passwords
+are not.
+
+Question: What is zero trust?
+Answer: Zero trust assumes no network location is inherently trustworthy.
+Every request is authenticated, authorized, and encrypted, and access is
+granted per application with continuous verification.
+
+Question: What is phishing?
+Answer: Phishing is a social engineering attack that impersonates a trusted
+party to trick a person into revealing credentials, approving a payment, or
+running malware. Spear phishing is targeted, whaling targets executives, and
+vishing uses voice calls.
+
+Question: How do you defend against phishing?
+Answer: Use email authentication with SPF, DKIM, and DMARC, filter and
+sandbox links and attachments, enforce multi-factor authentication, verify
+payments out of band, and train staff to report suspicious messages.
+
+Question: What is ransomware?
+Answer: Ransomware encrypts data and demands payment for the key. Modern
+operations also steal data and threaten publication, called double extortion.
+Defenses include tested offline or immutable backups, segmentation, patching,
+endpoint detection, and rapid containment.
+
+Question: What is SQL injection and how is it prevented?
+Answer: SQL injection inserts database commands through unsanitized input.
+It is prevented primarily with parameterized queries, also called prepared
+statements, plus input validation and least-privilege database accounts.
+
+Question: What is cross-site scripting?
+Answer: Cross-site scripting injects attacker-controlled JavaScript into pages
+viewed by other users. Defenses are output encoding, a content security
+policy, and frameworks that escape output by default.
+
+Question: What is the difference between symmetric and asymmetric encryption?
+Answer: Symmetric encryption uses one shared key and is fast, as with AES.
+Asymmetric encryption uses a public and private key pair and is slower, as
+with RSA and ECC. Real protocols combine them, using asymmetric cryptography
+to exchange a symmetric session key.
+
+Question: What is hashing and how does it differ from encryption?
+Answer: Hashing is a one-way function producing a fixed-length digest.
+Encryption is reversible with a key. Hashes verify integrity and store
+passwords, while encryption protects data that must be read later.
+
+Question: Why are bcrypt and Argon2 used for passwords instead of SHA-256?
+Answer: General hashes are far too fast, so attackers can try billions of
+guesses. bcrypt and Argon2 are deliberately slow and memory-hard, and they
+include salts, which makes large-scale cracking expensive.
+
+Question: What is a digital signature?
+Answer: A digital signature signs a hash of a message with a private key.
+Anyone with the public key can verify integrity, authenticity, and
+non-repudiation.
+
+Question: What is TLS?
+Answer: Transport Layer Security encrypts and authenticates data in transit.
+The handshake authenticates the server using certificates and negotiates keys,
+then application data is protected with authenticated symmetric encryption.
+
+Question: What is forward secrecy?
+Answer: Forward secrecy uses ephemeral key exchange so that each session has
+its own key. If a long-term private key leaks later, recorded past sessions
+stay unreadable.
+
+Question: What is a firewall?
+Answer: A firewall filters network traffic by rules. Stateful firewalls track
+connections, and next-generation firewalls add application awareness, intrusion
+prevention, and threat intelligence.
+
+Question: What is network segmentation?
+Answer: Segmentation divides a network into zones with controlled traffic
+between them. It limits lateral movement and protects sensitive systems.
+
+Question: What is an intrusion detection system?
+Answer: An intrusion detection system monitors traffic or hosts and alerts on
+suspicious activity. Signature detection matches known patterns; anomaly
+detection flags deviations from a baseline. An intrusion prevention system can
+also block.
+
+Question: What is a SIEM?
+Answer: A security information and event management system collects and
+normalizes logs from many sources, correlates events, and generates alerts for
+analysts.
+
+Question: What is the cyber kill chain?
+Answer: The kill chain describes intrusion stages: reconnaissance,
+weaponization, delivery, exploitation, installation, command and control, and
+actions on objectives. Defenders try to break the chain early.
+
+Question: What is MITRE ATT&CK?
+Answer: ATT&CK is a knowledge base of adversary tactics and techniques based on
+real observations. Defenders use it to map coverage, build detections, and plan
+threat hunting.
+
+Question: What are the phases of incident response?
+Answer: The NIST life cycle is preparation; detection and analysis; containment,
+eradication, and recovery; and post-incident activity.
+
+Question: What is containment in incident response?
+Answer: Containment stops an incident from spreading, for example by isolating
+a host or disabling an account. Short-term containment buys time; long-term
+containment creates a stable state while the cause is removed.
+
+Question: What is chain of custody?
+Answer: Chain of custody is the documented record of who handled evidence, when,
+and how. It preserves integrity and supports legal admissibility.
+
+Question: What is the difference between a vulnerability scan and a penetration
+test?
+Answer: A vulnerability scan automatically compares systems against known
+weaknesses. A penetration test is an authorized human-led simulation that chains
+weaknesses together to demonstrate real impact.
+
+Question: What is CVSS?
+Answer: The common vulnerability scoring system rates severity from zero to ten
+based on exploitability and impact. It does not account for business context, so
+prioritization also uses exposure, threat intelligence, and asset criticality.
+
+Question: What is a zero-day?
+Answer: A zero-day is a vulnerability unknown to the vendor, so no patch exists.
+Most real attacks instead use known but unpatched flaws, called n-days.
+
+Question: What is lateral movement?
+Answer: Lateral movement is an attacker moving from one compromised system to
+others, often using stolen credentials or remote management tools. Segmentation
+and least privilege limit it.
+
+Question: What is privilege escalation?
+Answer: Privilege escalation gains higher permissions than the attacker started
+with, for example from a normal user to administrator. It exploits software flaws
+or misconfiguration.
+
+Question: What is a rootkit?
+Answer: A rootkit hides malicious code and maintains privileged access. It may
+modify the kernel, boot process, or system tools. Detection often requires
+offline analysis or integrity verification.
+
+Question: What is fileless malware?
+Answer: Fileless malware runs in memory and abuses legitimate tools such as
+PowerShell or Windows Management Instrumentation. It leaves few artifacts, so
+behavioral detection matters more than file signatures.
+
+Question: What is business email compromise?
+Answer: Business email compromise impersonates an executive or supplier to
+redirect payments or obtain data. It often uses no malware, only convincing
+language, so verification procedures are the main defense.
+
+Question: What is data loss prevention?
+Answer: Data loss prevention detects and blocks sensitive data leaving
+controlled environments using pattern matching, fingerprinting, and
+classification labels.
+
+Question: What is the shared responsibility model in cloud security?
+Answer: The provider secures the underlying infrastructure, while the customer
+secures identities, configuration, data, and applications. Misunderstanding the
+boundary causes breaches.
+
+Question: What is the biggest cloud misconfiguration risk?
+Answer: Publicly accessible storage is a classic risk. Buckets and blobs should
+block public access by default, encrypt data, and log access.
+
+Question: What is infrastructure as code security?
+Answer: Infrastructure as code defines environments in files. Security reviews
+those files, scans them with policy as code, and prevents insecure
+configurations from being deployed.
+
+Question: What is a software bill of materials?
+Answer: A software bill of materials lists the components and versions in a
+product. It enables fast impact assessment when a dependency is compromised.
+
+Question: What is supply chain security?
+Answer: Supply chain security protects software, hardware, and services
+upstream. It includes vendor assessment, dependency pinning, artifact signing,
+and monitoring for compromised updates.
+
+Question: What is the difference between authentication and authorization?
+Answer: Authentication proves who you are. Authorization decides what you may
+do. Accounting records what you did.
+
+Question: What is OAuth 2 and how does it differ from OpenID Connect?
+Answer: OAuth 2 is an authorization framework that grants access tokens.
+OpenID Connect adds an identity layer on top of OAuth 2 to authenticate users.
+
+Question: What is a JSON web token?
+Answer: A JSON web token is a signed structure containing claims. It must be
+validated for signature, issuer, audience, and expiry before it is trusted.
+
+Question: What is Kerberoasting?
+Answer: Kerberoasting requests service tickets for accounts with service
+principal names and cracks them offline. Strong service account passwords,
+managed service accounts, and monitoring reduce the risk.
+
+Question: What is the principle of fail-safe defaults?
+Answer: Fail-safe defaults mean access is denied unless explicitly allowed, and
+systems fail into a secure state rather than an open one.
+
+Question: What is a honeypot?
+Answer: A honeypot is a decoy system that attracts attackers and reveals their
+techniques while producing few false positives.
+
+Question: What is threat hunting?
+Answer: Threat hunting is a proactive, hypothesis-driven search for compromise
+that existing alerts missed. Successful hunts produce new detections and better
+visibility.
+
+Question: What is the difference between backup and replication?
+Answer: Backup is a historical copy used to restore after damage. Replication is
+a live copy that mirrors changes, including malicious encryption, so replication
+is not a substitute for protected backups.
+
+Question: What is the three-two-one backup rule?
+Answer: Keep three copies of data, on two different media types, with one copy
+offsite. Test restores regularly, and keep at least one copy immutable.
+
+Question: What is a recovery time objective?
+Answer: The recovery time objective is the maximum acceptable downtime after a
+disruption. The recovery point objective is the maximum acceptable data loss
+measured in time.
+
+Question: What is security awareness training?
+Answer: Security awareness training teaches staff to recognize threats, protect
+credentials, handle data correctly, and report incidents quickly. It should be
+short, frequent, and role-relevant.
+
+Question: Why is compliance not the same as security?
+Answer: Compliance proves that required controls exist on paper. Security
+requires that controls actually work against real threats. An organization can
+be compliant and still be breached.
+
+Question: What is responsible disclosure?
+Answer: Responsible disclosure gives a vendor time to fix a vulnerability
+before public details are released. Coordinated disclosure uses a facilitator
+when parties disagree.
+
+Question: What is a man-in-the-middle attack?
+Answer: A man-in-the-middle attack places the attacker between two parties who
+believe they communicate directly. The attacker can read, modify, or inject
+traffic. Certificate validation and mutual authentication defend against it.
+
+Question: What is ARP spoofing?
+Answer: ARP spoofing sends false address resolution protocol replies so traffic
+goes to the attacker. Dynamic ARP inspection and static entries mitigate it.
+
+Question: What is a denial of service attack?
+Answer: A denial of service attack exhausts resources so legitimate users cannot
+be served. Distributed attacks use many hosts, often a botnet. Defenses include
+rate limiting, scrubbing, anycast, and upstream filtering.
+
+Question: What is a botnet?
+Answer: A botnet is a network of compromised devices controlled remotely. It is
+used for distributed denial of service, spam, credential theft, and proxy
+traffic.
+
+Question: What is endpoint detection and response?
+Answer: Endpoint detection and response records detailed host activity, detects
+suspicious behavior, and enables response actions such as isolating a machine.
+
+Question: What is application allowlisting?
+Answer: Application allowlisting permits only approved programs to run. It is
+one of the strongest endpoint defenses because most malware is unapproved code.
+
+Question: What is patch management?
+Answer: Patch management inventories software, tracks vulnerabilities, tests
+fixes, and deploys them on a schedule, with emergency handling for critical
+internet-facing flaws.
+
+Question: What is a vulnerability?
+Answer: A vulnerability is a weakness that can be exploited to violate
+confidentiality, integrity, or availability.
+
+Question: What is risk acceptance?
+Answer: Risk acceptance is a documented decision to live with a risk because the
+cost of treatment exceeds the benefit, or because the risk is within tolerance.
+It must have an owner.
+
+Question: What is the difference between a red team and a blue team?
+Answer: A red team simulates adversaries to test defenses. A blue team defends,
+monitors, and responds. A purple team improves communication between them.
+
+Question: What is threat modeling?
+Answer: Threat modeling finds design weaknesses before attackers do. It asks
+what is being built, what can go wrong, what to do about it, and whether the work
+succeeded. STRIDE is a common checklist.
+
+Question: What is a security control?
+Answer: A security control is a safeguard that reduces risk. Controls are
+preventive, detective, or corrective, and administrative, technical, or
+physical.
+
+Question: What is an attack surface?
+Answer: The attack surface is every point where an attacker could try to enter
+or extract data, including services, APIs, accounts, dependencies, and people.
+
+Question: What is a zero-day exploit?
+Answer: A zero-day exploit abuses a vulnerability that is unknown to the vendor,
+so no patch is available yet.
+
+Question: What is sandboxing?
+Answer: Sandboxing runs untrusted code in an isolated environment so that
+malicious behavior cannot affect the real system. Security analysts use
+sandboxes to observe malware.
+
+Question: What is the purpose of logging?
+Answer: Logging records events for detection, investigation, and compliance.
+Logs must be centralized, time-synchronized, protected from tampering, and
+retained according to policy.
+
+Question: What is a security policy?
+Answer: A security policy is a management statement of rules and expectations.
+It is supported by standards, procedures, and guidelines, and it must be
+enforced and reviewed.
+
+Question: What is data classification?
+Answer: Data classification labels information by sensitivity, such as public,
+internal, confidential, and restricted. It determines handling, storage, and
+sharing rules.
+
+Question: What is encryption at rest?
+Answer: Encryption at rest protects stored data, for example on a disk or in a
+database, so that theft of the medium does not expose the contents.
+
+Question: What is encryption in transit?
+Answer: Encryption in transit protects data moving across networks, typically
+with TLS, so that interception does not expose the contents.
+
+Question: Why is rolling your own cryptography discouraged?
+Answer: Cryptographic code has subtle failure modes that are easy to miss, such
+as nonce reuse or timing leaks. Vetted libraries are reviewed and maintained by
+experts.
+
+Question: What is a nonce?
+Answer: A nonce is a number used once. In encryption modes it must never repeat
+with the same key, because reuse leaks information and can break authentication.
+
+Question: What is a salt?
+Answer: A salt is unique random data stored with a password hash. It prevents
+precomputed tables and ensures identical passwords produce different hashes.
+
+Question: What is credential stuffing?
+Answer: Credential stuffing replays leaked username and password pairs against
+other services. It succeeds because people reuse passwords.
+
+Question: What is password spraying?
+Answer: Password spraying tries a few common passwords across many accounts to
+avoid lockout thresholds that trigger on repeated failures for one account.
+
+Question: What is session hijacking?
+Answer: Session hijacking steals an authenticated session token. Defenses
+include secure and HttpOnly cookies, short session lifetimes, and binding
+sessions to client attributes.
+
+Question: What is cross-site request forgery?
+Answer: Cross-site request forgery tricks a logged-in user's browser into
+sending an unwanted request. Anti-CSRF tokens and SameSite cookies defend
+against it.
+
+Question: What is server-side request forgery?
+Answer: Server-side request forgery makes a server fetch an attacker-chosen URL,
+which can reach internal services. Allowlists and segmentation reduce the risk.
+
+Question: What is an insecure direct object reference?
+Answer: It occurs when an application exposes an internal identifier but fails
+to check authorization, letting a user access another user's data.
+
+Question: What is the principle of separation of duties?
+Answer: Separation of duties splits a sensitive process between people so that
+no single person can abuse it alone.
+
+Question: What is a demilitarized zone?
+Answer: A demilitarized zone is a network segment for internet-facing services,
+separated from the internal network by firewalls.
+
+Question: What is network access control?
+Answer: Network access control checks device identity and health before allowing
+a connection, quarantining devices that fail policy.
+
+Question: What is email authentication?
+Answer: Email authentication uses SPF to list authorized senders, DKIM to sign
+messages, and DMARC to define handling and reporting when checks fail.
+
+Question: What is a man-in-the-browser attack?
+Answer: A man-in-the-browser attack uses malware inside the browser to modify
+transactions and pages without the user noticing.
+
+Question: What is an advanced persistent threat?
+Answer: An advanced persistent threat is a well-resourced, stealthy, long-term
+intrusion campaign, often state-sponsored, that maintains access and avoids
+detection.
+
+Question: What is living off the land?
+Answer: Living off the land means using legitimate tools already present on a
+system, such as PowerShell or scheduled tasks, so malicious activity blends with
+normal administration.
+
+Question: What is the difference between an indicator of compromise and an
+indicator of attack?
+Answer: An indicator of compromise is evidence that a system is already
+compromised, such as a known malicious hash. An indicator of attack is behavior
+suggesting an attack in progress, such as unusual lateral movement.
+
+Question: What is threat intelligence?
+Answer: Threat intelligence is evidence-based knowledge about adversaries,
+including strategic, operational, tactical, and technical information, used to
+improve decisions and defenses.
+
+Question: What is a security incident?
+Answer: A security incident is an event that actually or potentially violates
+security policy or threatens confidentiality, integrity, or availability.
+
+Question: What is the first step when you suspect a breach?
+Answer: Follow the incident response plan, preserve evidence, avoid tipping off
+the attacker, and escalate to the incident commander. Do not power off systems
+before capturing volatile data unless safety requires it.
+
+Question: What is anti-forensics?
+Answer: Anti-forensics is the attempt to destroy or alter evidence, for example
+by timestomping, log deletion, or encryption. Centralized logging and integrity
+monitoring counter it.
+
+Question: What is the Purdue model?
+Answer: The Purdue model describes layered industrial control network
+architecture, separating enterprise systems from supervisory and control layers,
+which supports segmentation.
+
+Question: What is a security operations center?
+Answer: A security operations center is a team and facility that monitors,
+detects, investigates, and responds to security events around the clock.
+
+Question: What is alert fatigue?
+Answer: Alert fatigue is desensitization caused by too many low-quality alerts.
+It leads to missed real incidents, so detection tuning is essential.
+
+Question: What is a security baseline?
+Answer: A security baseline is a documented, approved configuration for systems,
+such as disabling unused services and enforcing password policy. Compliance is
+monitored and drift is corrected.
+
+Question: What is secure boot?
+Answer: Secure boot verifies the boot chain cryptographically so that only
+trusted code runs at startup, which resists bootkits.
+
+Question: What is a supply chain attack example?
+Answer: A supply chain attack might compromise a software vendor's build system
+and ship malware inside a signed update, reaching many customers at once.
+
+Question: What is an insider threat?
+Answer: An insider threat is a current or former employee, contractor, or partner
+who misuses access, whether maliciously or through negligence.
+
+Question: How do you reduce insider risk?
+Answer: Use least privilege, separation of duties, behavior monitoring, data loss
+prevention, and a fair reporting culture that encourages people to report
+mistakes.
+
+Question: What is an air gap?
+Answer: An air gap physically separates a network from the internet. It is
+strong but not absolute, because removable media and supply chains can bridge
+it.
+
+Question: What is the difference between a hot, warm, and cold site?
+Answer: A hot site is fully equipped and ready immediately. A warm site has some
+equipment and needs setup. A cold site has space and infrastructure but little
+else.
+
+Question: What is vulnerability disclosure?
+Answer: Vulnerability disclosure is the process of reporting a flaw to the
+vendor and coordinating public release. It should include clear channels and
+safe harbor for researchers.
